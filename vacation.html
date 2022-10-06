@@ -9,39 +9,59 @@
 
 <body>
 
-    <h2>selects a vacation
+    <h2>Konda Shivaradhan selects a vacation
     </h2>
     <form>
-        <input type="checkbox" id="cb1_cheese" name="topping1" value="true" checked>
-        <label for="cb1_cheese">Travel by Air</label></br>
+        <input type="checkbox" id="air" name="topping1" value="true">
+        <label for="Air">Travel by Air</label></br>
 
-        <input type="checkbox" id="cb1_olive" name="topping2" value="true">
-        <label for="cb1_olive">Domestic</label></br>
+        <input type="checkbox" id="domestic" name="topping2" value="true">
+        <label for="domestic">Domestic</label></br>
 
-        <input type="checkbox" id="cb1_onion" name="topping3" value="false" checked>
-        <label for="cb1_onion">Resort</label></br>
+        <input type="checkbox" id="resort" name="topping3" value="false">
+        <label for="resort">Resort</label></br>
 
-        <input type="button" onclick="selectVacation()" value="Select a vacation">
+        <input type="button" class="btn btn-secondary" type="button" onclick="selectVacation()" value="Select a Vacation">
     </form>
     <p id="result">This text will be replaced </p>
 
     <script>
-        my_vacation = {}
-        my_sd =
+        my_vacation = {
+            air: true,
+            domestic: true,
+            resort: true
+        }
 
-            function resolveForm() {
-                console.log("Getting form values")
-                age = document.getElementById("form1_age").value
-                nick = document.getElementById("form1_nick").value
-                confirmed = confirm("Are these the values? " + age + " and " + nick)
-
-                out = document.getElementById("result")
-                if (confirmed) {
-                    out.innerHTML = "Values were confirmed"
-                } else {
-                    out.innerHTML = "Values were not confirmed"
-                }
+        function selectVacation() {
+            my_vacation = {}
+            air = document.getElementById("air").value
+            domestic = document.getElementById("domestic").value
+            resort = document.getElementById("resort").value
+            result = document.getElementById("result")
+            if (document.getElementById("air").checked) {
+                my_vacation.air = true
+            } else {
+                my_vacation.air = false
             }
+            if (document.getElementById("domestic").checked) {
+                my_vacation.domestic = true
+            } else {
+                my_vacation.domestic = false
+            }
+            if (document.getElementById("resort").checked) {
+                my_vacation.resort = true
+            } else {
+                my_vacation.resort = false
+            }
+            result.innerHTML = JSON.stringify(my_vacation)
+        }
+
+        function updateVacation() {
+            var s = document.getElementById("property").value
+            var p = document.getElementById("value").value
+            my_vacation[s] = p
+            result.innerHTML = JSON.stringify(my_vacation)
+        }
     </script>
 
 </body>
