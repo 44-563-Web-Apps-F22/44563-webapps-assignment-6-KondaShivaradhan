@@ -16,16 +16,27 @@
     <label for="MuscianG">Guess the musician </label>
     <input type="text" id="MuscianG" name="MuscianG" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the guess ">
+    <input type="button" id="gbutton" onclick="checkGuess()" value="Check the guess ">
     </form>
     <p id="result">This text will be replaced </p>
     <div class="container">
         <img src="img/k.jpg" id="image" onclick="swapImage()" height="100px" width="100px" alt="" srcset="">
     </div>
+    <!-- 
+         On the first part, if the guess is incorrect three times in a row, replace the onclick 
+property value with a new function call that displays an alert with the text “Sorry, game over.” 
+You may also pull in the bootstrap framework and use it to style the elements in these apps. 
+Use your sense of style to improve the look of these apps.  Do small chunks and commit each 
+time your modification succeeds.    I would recommend that you tag the commit for your 
+working app.  (Read about creating a Git tag for a commit here https://git-
+scm.com/book/en/v2/Git-Basics-Tagging) 
+ 
+     -->
     <script>
         correct = 0;
         wrong = 0;
         useImage = 1;
+        conwrong = 0;
 
         function swapImage() {
             switch (useImage) {
@@ -55,14 +66,23 @@
             secret = document.getElementById("MuscianS").value
             guess = document.getElementById("MuscianG").value
             if (secret == guess) {
+                conwrong = 0;
                 correct = correct + 1
                 alert("You got it right")
             } else {
                 wrong += 1
+                conwrong++
                 alert("Wrong Musician")
             }
-
+            if (conwrong > 2) {
+                document.getElementById('gbutton').onclick = gameover
+                gameover()
+            }
             result.innerHTML = "Correct guess: " + correct + "\nWrong guess: " + wrong
+        }
+
+        function gameover() {
+            alert('Sorry, game over')
         }
     </script>
 
