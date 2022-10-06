@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        vacation selection
+    </title>
+</head>
+
+<body>
+
+    <h2>selects a vacation
+    </h2>
+    <form>
+        <input type="checkbox" id="cb1_cheese" name="topping1" value="true" checked>
+        <label for="cb1_cheese">Travel by Air</label></br>
+
+        <input type="checkbox" id="cb1_olive" name="topping2" value="true">
+        <label for="cb1_olive">Domestic</label></br>
+
+        <input type="checkbox" id="cb1_onion" name="topping3" value="false" checked>
+        <label for="cb1_onion">Resort</label></br>
+
+        <input type="button" onclick="selectVacation()" value="Select a vacation">
+    </form>
+    <p id="result">This text will be replaced </p>
+
+    <script>
+        my_vacation = {}
+        my_sd =
+
+            function resolveForm() {
+                console.log("Getting form values")
+                age = document.getElementById("form1_age").value
+                nick = document.getElementById("form1_nick").value
+                confirmed = confirm("Are these the values? " + age + " and " + nick)
+
+                out = document.getElementById("result")
+                if (confirmed) {
+                    out.innerHTML = "Values were confirmed"
+                } else {
+                    out.innerHTML = "Values were not confirmed"
+                }
+            }
+    </script>
+
+</body>
+
+</html>

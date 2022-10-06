@@ -19,10 +19,36 @@
     <input type="button" onclick="checkGuess()" value="Check the guess ">
     </form>
     <p id="result">This text will be replaced </p>
-
+    <div class="container">
+        <img src="img/k.jpg" id="image" onclick="swapImage()" height="100px" width="100px" alt="" srcset="">
+    </div>
     <script>
         correct = 0;
         wrong = 0;
+        useImage = 1;
+
+        function swapImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("image").src = 'img/k.jpg'
+                    useImage = 1
+                    break;
+                case 2:
+                    document.getElementById("image").src = 'img/N.jpg'
+                    useImage = 2
+                    break;
+                case 3:
+                    document.getElementById("image").src = 'img/O.jpg'
+                    useImage = 3
+                    break;
+
+                default:
+                    document.getElementById("image").src = 'img/k.jpg'
+                    useImage = 1
+                    break;
+            }
+            useImage++;
+        }
 
         function checkGuess() {
             console.log("Check the guess")
